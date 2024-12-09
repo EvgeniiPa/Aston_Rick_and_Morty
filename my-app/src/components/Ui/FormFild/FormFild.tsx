@@ -4,15 +4,19 @@ type FormFildProps = {
     label: string,
     children: React.ReactNode
     errorMessage?: string
+    colorErrorMes?:string
 }
 
-const FormFild: FC<FormFildProps> = ({ label, children,errorMessage }) => {
+const FormFild: FC<FormFildProps> = ({ label, children,  colorErrorMes, errorMessage }) => {
     return (
-        <label>
-            <span>{label}</span>
-            {children}
-            <span style={{color:'red'}}>{errorMessage}</span>
-        </label>
+        <>
+
+            <label>
+                <span>{label}</span>
+                {children}
+            </label>
+            <span className={colorErrorMes}>{errorMessage}</span>
+        </>
     );
 };
 

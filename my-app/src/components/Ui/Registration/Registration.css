@@ -1,0 +1,13 @@
+.form {
+    display: flex;
+    flex-direction:column ;
+    
+}
+
+.form-btn {
+    align-self: center;
+}
+
+.form-error-color{
+    color: red;
+}

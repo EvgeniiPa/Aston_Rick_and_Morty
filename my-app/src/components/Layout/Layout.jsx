@@ -14,6 +14,7 @@ export function Layout(){
                     <NavLink to="/" className={'link'}>Characters</NavLink>
                     <NavLink to="/locations" className={'link'}>Locations</NavLink>
                     <NavLink to="/episodes" className={'link'}>Episodes</NavLink>
+                    <NavLink to="/authorization">Authorization</NavLink>
                 </div>
             </header>
             <main>

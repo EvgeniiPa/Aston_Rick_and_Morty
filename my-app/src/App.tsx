@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Episodes } from './pages/episodes/Episodes';
 import { Locations } from './pages/locations/Locations';
 import { Characters } from './pages/characters/Characters';
-import { NotFound } from './pages/NotFound';
+import { NotFound } from './pages/notFound/NotFound';
 import './App.css';
 import { Layout } from './components/Layout/Layout';
 

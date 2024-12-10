@@ -22,23 +22,34 @@ const Registration: FC = () => {
 
 
     const onSubmit = (data: shemaForm) => {
-        console.log('Форма отправлена', data);
+
+        const lsGetValue = localStorage.getItem('registerForm');
+        console.log(lsGetValue)
+        let dataArray = []
+
+        if (lsGetValue) {
+            dataArray = JSON.parse(lsGetValue)
+
+        }
+        dataArray.push(data)
+        localStorage.setItem('registerForm', JSON.stringify(dataArray))
+
     };
 
 
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className='form'>
-            <FormFild label='Логин' errorMessage={errors.login?.message}   colorErrorMes='form-error-color'>
+            <FormFild label='Логин' errorMessage={errors.login?.message} colorErrorMes='form-error-color'>
                 <input type="text"
                     placeholder='Введите логин'
                     {...register('login')} />
             </FormFild>
-            <FormFild label='Пароль' errorMessage={errors.password?.message}   colorErrorMes='form-error-color'>
+            <FormFild label='Пароль' errorMessage={errors.password?.message} colorErrorMes='form-error-color'>
                 <input
                     type="password"
                     placeholder='Введите пароль'
-                 
+
                     {...register('password')}
                 />
             </FormFild>

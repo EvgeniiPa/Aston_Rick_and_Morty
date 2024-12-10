@@ -1,0 +1,25 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 40px;
+    background-color: rgb(117, 115, 115);
+}
+
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    width: 30vw;
+    padding: 5px;
+}
+
+
+.link{
+    color: white;
+    text-decoration: none;
+}
+
+.active{
+    color: rgb(81, 174, 110);
+}
+

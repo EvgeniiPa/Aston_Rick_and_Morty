@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Login from '../Login/Login';
-import Registration from '../Registration/Registration';
+import Registration from '../../Form/Registration';
 
 const AuthForm = () => {
 

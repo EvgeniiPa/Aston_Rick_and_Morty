@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
-import { Episodes } from './pages/episodes/Episodes';
-import { Locations } from './pages/locations/Locations';
+import { History } from './pages/history/history';
+import { Favourites } from './pages/favourites/Favorurites';
 import { Characters } from './pages/characters/Characters';
 import { NotFound } from './pages/notFound/NotFound';
-import { Authorization } from './pages/authorization/Authorization';
+import { Registration } from './pages/registration/Registration';
 import './App.css';
 import { Layout } from './components/Layout/Layout';
 
@@ -13,9 +13,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Layout/>}>
           <Route index element={<Characters/>}/>
-          <Route path='/locations' element={<Locations/>}/>
-          <Route path='/episodes' element={<Episodes/>}/>
-          <Route path='/authorization' element={<Authorization/>}/>
+          <Route path='/favourites' element={<Favourites/>}/>
+          <Route path='/history' element={<History/>}/>
+          <Route path='/registration' element={<Registration/>}/>
           <Route path='*' element={<NotFound/>}/>
         </Route>
       </Routes>

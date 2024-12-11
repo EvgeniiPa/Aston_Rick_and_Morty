@@ -12,9 +12,9 @@ export function Layout(){
                 </div>
                 <div className="header-container">
                     <NavLink to="/" className={'link'}>Characters</NavLink>
-                    <NavLink to="/locations" className={'link'}>Locations</NavLink>
-                    <NavLink to="/episodes" className={'link'}>Episodes</NavLink>
-                    <NavLink to="/authorization">Authorization</NavLink>
+                    <NavLink to="/favourites" className={'link'}>Favourites</NavLink>
+                    <NavLink to="/history" className={'link'}>History</NavLink>
+                    <NavLink to="/registration">Registration</NavLink>
                 </div>
             </header>
             <main>

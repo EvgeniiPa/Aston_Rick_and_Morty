@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import FormFild from '../FormFild/FormFild';
-import ButtonForm from '../ButtonForm/ButtonForm';
+import FormFild from '../Ui/FormFild/FormFild'
+import ButtonForm from '../Ui/ButtonForm/ButtonForm'
 import './Registration.css'
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';

@@ -1,13 +1,13 @@
-import IMG from './locations.svg'
-import './locations.css'
+import IMG from './history.svg'
+import './history.css'
 
-export function Locations(){
+export function History(){
     return(
         <div>
             <div className='image-container'>
                 <img src={IMG} alt="main img" />
             </div>
-            Location Page!
+            History Page!
         </div>
     )
 }

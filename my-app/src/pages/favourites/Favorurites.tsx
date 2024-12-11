@@ -1,13 +1,13 @@
-import IMG from './episodes.svg'
-import './episodes.css'
+import IMG from './favourites.svg'
+import './favourites.css'
 
-export function Episodes(){
+export function Favourites(){
     return(
         <div>
             <div className='image-container'>
                 <img src={IMG} alt="main img" />
             </div>
-            Episodes Page!
+            Favourites Page!
         </div>
     )
 }

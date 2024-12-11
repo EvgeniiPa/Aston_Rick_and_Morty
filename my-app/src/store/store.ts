@@ -1,9 +1,10 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-
+import favouriteReducer from './favouritesSlice'
+ 
 
 export const store = configureStore({
   reducer: {
-    
+    favourites: favouriteReducer,
   },
 });
 

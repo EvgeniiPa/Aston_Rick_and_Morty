@@ -1,10 +1,8 @@
-import Form from "../../components/Form/Form"
+import React from 'react';
+import { AuthForm } from '../../components/Ui/AuthForm/AuthForm';
 
+const Authorization = () => {
+    return <AuthForm />
+};
 
-export function Authorization(){
-    return(
-        <>
-         <Form/>
-        </>
-    )
-}
+export default Authorization;

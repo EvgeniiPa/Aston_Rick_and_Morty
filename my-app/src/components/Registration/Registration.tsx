@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
-import FormFild from '../Ui/FormFild/FormFild';
+
 import ButtonForm from '../Ui/ButtonForm/ButtonForm';
-import './Registration.css';
+import FormFild from '../Ui/FormFild/FormFild';
+import './Registration.css'
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-
-const Form: FC = () => {
+const Registration: FC = () => {
 
     const CreateShemaForm = z.object({
         login: z.string().min(6, { message: 'Длина должна быть 6 или более символов' }),
@@ -59,4 +59,4 @@ const Form: FC = () => {
     );
 };
 
-export default Form;
+export default Registration;

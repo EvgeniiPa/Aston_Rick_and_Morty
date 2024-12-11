@@ -1,31 +1,29 @@
-import React, { useState } from 'react';
-import Login from '../Login/Login';
-import Registration from '../Registration/Registration';
+import { useState } from "react"
 
-const AuthForm = () => {
 
-    const [login, setLogin] = useState(false)
-    const [registration, setRegistration] = useState(false)
+import Login from "../Login/Login"
+import Registration from "../../Registration/Registration"
 
-    const handleLogin = () => {
-        setLogin(true)
-        setRegistration(false)
+export function AuthForm() {
+    const [auth, authType] = useState('register')
 
+
+    const handleClick = () => {
+        authType(prevState => prevState === 'register' ? 'auth' : 'register')
     }
-
-    const handleRegistration = () => {
-        setRegistration(true)
-        setLogin(false)
-    }
-
     return (
-        <div>
-            <button onClick={handleLogin}>Вход</button>
-            <button onClick={handleRegistration}>Зарегистироваться</button>
-            {login ? <Login /> : ''}
-            {registration ? <Registration /> : ''}
-        </div>
-    );
-};
 
-export default AuthForm;
+            <div className="">
+                <p>{auth === 'register' ? 'Регистрация' : 'Авторизация'}</p>
+
+                {auth === 'register' ? <Registration /> : <Login />}
+
+                {auth === 'register' ? 'Уже есть аккаунт?' : 'Еще нет аккаунта'}
+
+                <button onClick={handleClick}>
+                    {auth === 'register' ? 'Войти' : 'Создать аккаунт'}
+                </button>
+            </div>
+     
+    )
+}

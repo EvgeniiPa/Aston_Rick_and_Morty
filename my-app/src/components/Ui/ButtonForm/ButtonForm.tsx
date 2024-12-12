@@ -4,13 +4,16 @@ import React, { FC } from 'react';
 type ButtonFormProps = {
     type: "submit" | "reset" | "button" | undefined,
     children: React.ReactNode,
-    className:string
+    className: string,
+    handleClick?: () => void,
     
+
+
 }
-const ButtonForm: FC<ButtonFormProps> = ({ type, children,className,...props }) => {
+const ButtonForm: FC<ButtonFormProps> = ({ type, handleClick,children, className, ...props }) => {
 
     return (
-        <button className={className} type={type} {...props}>{children}</button>
+        <button className={className} onClick={handleClick} type={type} {...props}>{children}</button>
     );
 };
 

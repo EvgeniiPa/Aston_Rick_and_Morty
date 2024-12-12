@@ -1,13 +1,11 @@
 
 import React, { useState } from 'react';
-
-
-
-
 import Login from "../Login/Login"
 import Registration from "../../Registration/Registration"
 import ButtonForm from "../ButtonForm/ButtonForm"
 import './AuthForm.css'
+
+
 export function AuthForm() {
     const [auth, authType] = useState('register')
 

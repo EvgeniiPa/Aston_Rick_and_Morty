@@ -49,7 +49,6 @@ const Registration: FC = () => {
     };
 
 
-
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)} className='form'>
@@ -67,7 +66,6 @@ const Registration: FC = () => {
                     />
                 </FormFild>
                 <ButtonForm type='submit' className='form-btn'>Зарегистироваться</ButtonForm>
-
             </form>
             {loading}
             {succes}

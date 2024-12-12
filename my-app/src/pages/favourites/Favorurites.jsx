@@ -5,6 +5,7 @@ import './favourites.css'
 
 export function Favourites(){
     const favouritesList = useSelector(state => state.favourites.favouritesList)
+    
 
 
     return(

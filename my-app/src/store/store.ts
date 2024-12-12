@@ -1,10 +1,12 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import favouriteReducer from './favouritesSlice'
+import registrationReducer from './registrationSlice'
  
 
 export const store = configureStore({
   reducer: {
     favourites: favouriteReducer,
+    registration: registrationReducer,
   },
 });
 

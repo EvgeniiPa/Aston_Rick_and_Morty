@@ -5,8 +5,11 @@ import './Registration.css'
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useDispatch } from 'react-redux';
+import { toggleActive } from '../../store/registrationSlice';
 
 const Registration: FC = () => {
+    const dispatch = useDispatch()
 
     const CreateShemaForm = z.object({
         login: z.string().min(6, { message: 'Длина должна быть 6 или более символов' }),
@@ -54,6 +57,7 @@ const Registration: FC = () => {
                 />
             </FormFild>
             <ButtonForm type='submit' className='form-btn'>Зарегистироваться</ButtonForm>
+            <button onClick={()=> dispatch(toggleActive)}>On click</button>
         </form>
     );
 };

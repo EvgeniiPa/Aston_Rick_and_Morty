@@ -1,27 +1,31 @@
-import React, { useState } from 'react';
-import FormFild from '../FormFild/FormFild';
-import ButtonForm from '../ButtonForm/ButtonForm';
+import React, { FC, useState } from 'react';
+
+import ButtonForm from '../Ui/ButtonForm/ButtonForm';
+import FormFild from '../Ui/FormFild/FormFild';
+import './Registration.css'
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import './Login'
-const Login = () => {
+
+const Registration: FC = () => {
     const [loading, setLodang] = useState<string | boolean>('')
     const [succes, setSucces] = useState('')
-
-
     const CreateShemaForm = z.object({
         login: z.string().min(6, { message: 'Длина должна быть 6 или более символов' }),
         password: z.string().min(7, { message: 'Длина должна быть 7 или более символов' })
     })
-    type ShemaForm = z.infer<typeof CreateShemaForm>
 
-    const { register, handleSubmit, formState: { errors }, reset } = useForm<ShemaForm>({
+    type shemaForm = z.infer<typeof CreateShemaForm>
+
+    const { register, formState: { errors }, handleSubmit ,reset} = useForm<shemaForm>({
         resolver: zodResolver(CreateShemaForm)
     })
-    const onSubmit = (data: ShemaForm) => {
 
-        const lsGetValue = localStorage.getItem('login');
+
+
+    const onSubmit = (data: shemaForm) => {
+
+        const lsGetValue = localStorage.getItem('registerForm');
         console.log(lsGetValue)
         let dataArray = []
 
@@ -30,16 +34,17 @@ const Login = () => {
 
         }
         dataArray.push(data)
-        localStorage.setItem('login', JSON.stringify(dataArray))
+        localStorage.setItem('registerForm', JSON.stringify(dataArray))
 
-        setLodang('Загрузка.....')
-
+        setLodang('Загрузка.......')
+        reset()
         setTimeout(() => {
 
             setLodang(false)
             setSucces('Ура, данные отправились')
             reset()
         }, 2500)
+
 
     };
 
@@ -48,8 +53,7 @@ const Login = () => {
         <>
             <form onSubmit={handleSubmit(onSubmit)} className='form'>
                 <FormFild label='Логин' errorMessage={errors.login?.message} colorErrorMes='form-error-color'>
-                    <input
-                        type="text"
+                    <input type="text"
                         placeholder='Введите логин'
                         {...register('login')} />
                 </FormFild>
@@ -57,18 +61,17 @@ const Login = () => {
                     <input
                         type="password"
                         placeholder='Введите пароль'
-                        {...register('password')} />
-                </FormFild>
-                <ButtonForm type='submit' className='form-btn'> Войти</ButtonForm>
 
+                        {...register('password')}
+                    />
+                </FormFild>
+                <ButtonForm type='submit' className='form-btn'>Зарегистироваться</ButtonForm>
             </form>
             {loading}
             {succes}
         </>
 
-
-
     );
 };
 
-export default Login;
+export default Registration;

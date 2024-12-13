@@ -14,7 +14,7 @@ export function Layout(){
                     <NavLink to="/"><img src={Favicon} alt="Favicon" /></NavLink>
                 </div>
                 <div className="header-container">
-                    {true ? 
+                    {userActive ? 
                     <>
                         <NavLink to="/" className={'link'}>Characters</NavLink>
                         <NavLink to="/favourites" className={'link'}>Favourites</NavLink>

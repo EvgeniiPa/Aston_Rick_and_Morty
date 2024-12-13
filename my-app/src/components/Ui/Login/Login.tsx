@@ -4,45 +4,52 @@ import ButtonForm from '../ButtonForm/ButtonForm';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import './Login'
+import './Login.css'; // Убедитесь, что используете CSS для стилей
+
 const Login = () => {
-    const [loading, setLodang] = useState<string | boolean>('')
-    const [succes, setSucces] = useState('')
-
-
+    const [loading, setLoading] = useState<boolean>(false);
+    const [success, setSuccess] = useState<string>('');
+    const [error, setError] = useState<string>('');
+    
     const CreateShemaForm = z.object({
         login: z.string().min(6, { message: 'Длина должна быть 6 или более символов' }),
         password: z.string().min(7, { message: 'Длина должна быть 7 или более символов' })
-    })
-    type ShemaForm = z.infer<typeof CreateShemaForm>
+    });
+    
+    type ShemaForm = z.infer<typeof CreateShemaForm>;
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm<ShemaForm>({
         resolver: zodResolver(CreateShemaForm)
-    })
+    });
+
     const onSubmit = (data: ShemaForm) => {
+        const lsGetValue = localStorage.getItem('registerForm');
+        let usersArray = [];
 
-        const lsGetValue = localStorage.getItem('login');
-        console.log(lsGetValue)
-        let dataArray = []
-
+        
         if (lsGetValue) {
-            dataArray = JSON.parse(lsGetValue)
-
+            usersArray = JSON.parse(lsGetValue);
         }
-        dataArray.push(data)
-        localStorage.setItem('login', JSON.stringify(dataArray))
+        
+        const userExists = usersArray.find((user:ShemaForm )=> user.login === data.login && user.password === data.password);
 
-        setLodang('Загрузка.....')
-
-        setTimeout(() => {
-
-            setLodang(false)
-            setSucces('Ура, данные отправились')
-            reset()
-        }, 2500)
-
+        if (userExists) {
+     
+            setLoading(true);
+            setTimeout(() => {
+                setLoading(false);
+                setSuccess('Успешный вход!');
+                reset(); 
+             
+            }, 1000);
+        } else {
+          
+            setError('Пользователь не найден.');
+            setTimeout(() => {
+                setError('');
+            }, 5000);
+        }
     };
-
 
     return (
         <>
@@ -59,15 +66,13 @@ const Login = () => {
                         placeholder='Введите пароль'
                         {...register('password')} />
                 </FormFild>
-                <ButtonForm type='submit' className='form-btn'> Войти</ButtonForm>
+                <ButtonForm type='submit' className='form-btn'>Войти на сайт</ButtonForm>
 
+                {loading && <p>Загрузка.....</p>}
+                {success && <p>{success}</p>}
+                {error && <p className='error-message'>{error}</p>}
             </form>
-            {loading}
-            {succes}
         </>
-
-
-
     );
 };
 

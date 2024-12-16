@@ -6,7 +6,7 @@ const registrationSlice = createSlice({
         active: false
     },
     reducers:{
-        toggleActive(state, action){
+        toggleActive(state,){
             state.active =  !state.active
         }
     }

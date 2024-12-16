@@ -4,12 +4,16 @@ import ButtonForm from '../ButtonForm/ButtonForm';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import './Login.css'; // Убедитесь, что используете CSS для стилей
+import { useDispatch } from 'react-redux'; 
+
+import { toggleActive } from '../../../store/registrationSlice';
+import './Login.css'; 
 
 const Login = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const [success, setSuccess] = useState<string>('');
     const [error, setError] = useState<string>('');
+    const dispatch = useDispatch()
     
     const CreateShemaForm = z.object({
         login: z.string().min(6, { message: 'Длина должна быть 6 или более символов' }),
@@ -34,14 +38,17 @@ const Login = () => {
         const userExists = usersArray.find((user:ShemaForm )=> user.login === data.login && user.password === data.password);
 
         if (userExists) {
-     
             setLoading(true);
             setTimeout(() => {
                 setLoading(false);
                 setSuccess('Успешный вход!');
+
                 reset(); 
              
             }, 1000);
+
+            dispatch(toggleActive())
+
         } else {
           
             setError('Пользователь не найден.');

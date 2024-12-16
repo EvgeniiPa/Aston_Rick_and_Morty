@@ -1,3 +1,4 @@
+
 import { Route, Routes } from "react-router-dom";
 import { History } from "./pages/history/history";
 import { Favourites } from "./pages/favourites/Favorurites";
@@ -6,6 +7,7 @@ import { NotFound } from "./pages/notFound/NotFound";
 import { Registration } from "./pages/registration/Registration";
 import "./App.css";
 import { Layout } from "./components/Layout/Layout";
+
 
 function App() {
   return (

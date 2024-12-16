@@ -7,10 +7,12 @@ import {
 import favouriteReducer from "./favouritesSlice";
 import { characterApi } from "./characterApi";
 
+
 export const store = configureStore({
   reducer: {
     favourites: favouriteReducer,
     [characterApi.reducerPath]: characterApi.reducer,
+    registration: registrationReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(characterApi.middleware),

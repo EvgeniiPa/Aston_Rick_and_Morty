@@ -1,31 +1,31 @@
+
 import React, { useState } from 'react';
-import Login from '../Login/Login';
-import Registration from '../../Form/Registration';
+import Login from "../Login/Login"
+import Registration from "../../Registration/Registration"
+import ButtonForm from "../ButtonForm/ButtonForm"
+import './AuthForm.css'
 
-const AuthForm = () => {
 
-    const [login, setLogin] = useState(false)
-    const [registration, setRegistration] = useState(false)
+export function AuthForm() {
+    const [auth, authType] = useState('auth')
 
-    const handleLogin = () => {
-        setLogin(true)
-        setRegistration(false)
 
+    const handleClick = () => {
+        authType(prevState => prevState === 'auth' ? 'register' : 'auth')
     }
-
-    const handleRegistration = () => {
-        setRegistration(true)
-        setLogin(false)
-    }
-
     return (
-        <div>
-            <button onClick={handleLogin}>Вход</button>
-            <button onClick={handleRegistration}>Зарегистироваться</button>
-            {login ? <Login /> : ''}
-            {registration ? <Registration /> : ''}
-        </div>
-    );
-};
 
-export default AuthForm;
+        <div className="auth-form">
+            <p className="auth-form__title">
+                {auth === 'auth'?'Авторизация' : 'Регистрация'}</p>
+            {auth === 'auth' ?  <Login /> :<Registration />}
+            <div className="auth-form__info">
+                {auth === 'auth' ? 'Если нет аккаунта,то регистрируйся' : 'Если есть аккаунт,входи быстрее'}
+                <ButtonForm handleClick={handleClick} type="button" className='form-btn'>
+                    {auth === 'auth' ? 'Создать аккаунт' : 'Войти'}
+                </ButtonForm >
+            </div>
+        </div>
+
+    )
+}

@@ -3,11 +3,7 @@ import { History } from './pages/history/history';
 import { Favourites } from './pages/favourites/Favorurites';
 import { Characters } from './pages/characters/Characters';
 import { NotFound } from './pages/notFound/NotFound';
-
 import { AuthForm } from './components/Ui/AuthForm/AuthForm';
-
-
-
 import './App.css';
 import { Layout } from './components/Layout/Layout';
 

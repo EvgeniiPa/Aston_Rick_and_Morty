@@ -7,22 +7,22 @@ import './AuthForm.css'
 
 
 export function AuthForm() {
-    const [auth, authType] = useState('register')
+    const [auth, authType] = useState('auth')
 
 
     const handleClick = () => {
-        authType(prevState => prevState === 'register' ? 'auth' : 'register')
+        authType(prevState => prevState === 'auth' ? 'register' : 'auth')
     }
     return (
 
         <div className="auth-form">
             <p className="auth-form__title">
-                {auth === 'register' ? 'Регистрация' : 'Авторизация'}</p>
-            {auth === 'register' ? <Registration /> : <Login />}
+                {auth === 'auth'?'Авторизация' : 'Регистрация'}</p>
+            {auth === 'auth' ?  <Login /> :<Registration />}
             <div className="auth-form__info">
-                {auth === 'register' ? 'Уже есть аккаунт?' : 'Еще нет аккаунта'}
+                {auth === 'auth' ? 'Если нет аккаунта,то регистрируйся' : 'Если есть аккаунт,входи быстрее'}
                 <ButtonForm handleClick={handleClick} type="button" className='form-btn'>
-                    {auth === 'register' ? 'Войти' : 'Создать аккаунт'}
+                    {auth === 'auth' ? 'Создать аккаунт' : 'Войти'}
                 </ButtonForm >
             </div>
         </div>

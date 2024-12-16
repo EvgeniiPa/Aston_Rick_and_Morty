@@ -3,7 +3,7 @@ import React, { FC, useState } from 'react';
 import ButtonForm from '../Ui/ButtonForm/ButtonForm';
 import FormFild from '../Ui/FormFild/FormFild';
 import './Registration.css'
-import { z } from 'zod';
+import { unknown, z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -17,7 +17,7 @@ const Registration: FC = () => {
 
     type shemaForm = z.infer<typeof CreateShemaForm>
 
-    const { register, formState: { errors }, handleSubmit ,reset} = useForm<shemaForm>({
+    const { register, formState: { errors }, handleSubmit, reset } = useForm<shemaForm>({
         resolver: zodResolver(CreateShemaForm)
     })
 
@@ -26,17 +26,29 @@ const Registration: FC = () => {
     const onSubmit = (data: shemaForm) => {
 
         const lsGetValue = localStorage.getItem('registerForm');
-        console.log(lsGetValue)
+
         let dataArray = []
 
         if (lsGetValue) {
             dataArray = JSON.parse(lsGetValue)
 
         }
+
         dataArray.push(data)
         localStorage.setItem('registerForm', JSON.stringify(dataArray))
 
+
+        console.log(localStorage.getItem('registerForm'))
+
+        const user = dataArray.find((user: shemaForm) => user.login === user.login)
+        if (user) {
+            alert('Вы успешно вошли в систему!');
+
+        } else {
+            alert('Неправильный логин или пароль!');
+        }
         setLodang('Загрузка.......')
+        
         reset()
         setTimeout(() => {
 

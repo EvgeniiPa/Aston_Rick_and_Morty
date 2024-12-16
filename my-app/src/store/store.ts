@@ -1,11 +1,19 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import favouriteReducer from './favouritesSlice'
- 
+import {
+  configureStore,
+  ThunkAction,
+  Action,
+  getDefaultMiddleware,
+} from "@reduxjs/toolkit";
+import favouriteReducer from "./favouritesSlice";
+import { characterApi } from "./characterApi";
 
 export const store = configureStore({
   reducer: {
     favourites: favouriteReducer,
+    [characterApi.reducerPath]: characterApi.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(characterApi.middleware),
 });
 
 export type AppDispatch = typeof store.dispatch;

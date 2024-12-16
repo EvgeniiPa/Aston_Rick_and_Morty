@@ -1,16 +1,17 @@
 import { useState } from "react";
-import IMG from './characters.svg'
-import "./characters.css"
+import CharacterList from "../../components/Character/CharacterList";
+import IMG from "./characters.svg";
+import "./characters.css";
 
-export function Characters(){
-    const [item, setItem] = useState()
+export function Characters() {
+  const [item, setItem] = useState();
 
-    return(
-        <div>
-            <div className="image-container">
-                <img src={IMG} alt="" />
-            </div>
-            Characters Page!
-        </div>
-    )
+  return (
+    <div>
+      <div className="image-container">
+        <img src={IMG} alt="" />
+      </div>
+      <CharacterList />
+    </div>
+  );
 }

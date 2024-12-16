@@ -1,0 +1,42 @@
+/* Контейнер списка */
+.character-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 10px;
+  justify-items: center;
+  margin: 100px;
+  padding: 0;
+}
+
+.character-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 250px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.character-card img {
+  width: 100%;
+  height: auto;
+  border-bottom: 2px solid #ddd;
+}
+
+.character-card h3 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.character-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.character-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(4, 255, 0, 0.2);
+}

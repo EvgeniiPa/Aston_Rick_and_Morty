@@ -11,7 +11,9 @@ const favouritesSlice = createSlice({
                 action
             })
         },
-        removeFavourite(state, action){},
+        removeFavourite(state, action){
+            
+        },
     }
 })
 

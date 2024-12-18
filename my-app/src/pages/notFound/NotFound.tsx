@@ -1,7 +1,7 @@
 export function NotFound(){
     return(
-        <div>
-            Not Found.
+        <div style={{display:"flex", justifyContent:"center", margin:"10px"}}>
+            Выберите вкладку
         </div>
     )
 }

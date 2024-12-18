@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useDispatch } from 'react-redux'; 
 
-import { toggleActive } from '../../../store/registrationSlice';
+import { toggleActive} from '../../../store/registrationSlice';
 import './Login.css'; 
 
 const Login = () => {
@@ -46,7 +46,6 @@ const Login = () => {
                 reset(); 
              
             }, 1000);
-
             dispatch(toggleActive())
 
         } else {
